@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="main.js"></script>
+    <title>productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
 </head>
+
 <body>
-    
-    <h1>hola mundo</h1>
+    <h1>Agregar Producto</h1>
+
+    <!-- Botón para abrir el formulario en un popup -->
+    <button id="abrir-popup">Abrir Formulario</button>
+
+    <!-- Contenedor del formulario (popup) -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h1>Agregar Producto</h1>
+        <form id="formulario-producto">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo" required><br>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required></textarea><br>
+
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" required><br>
+
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" required><br>
+
+            <button id="boton-enviar" type="submit">Agregar Producto</button>
+
+        </form>
+
+        <div id="mensaje-exito" style="display: none; color: green; text-align: center; margin-top: 10px;">Producto agregado correctamente</div>
+
+        <button id="cerrar-popup">Cerrar</button>
+    </div>
+
+    <table id="tabla-productos">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Marca</th>
+                <th>Acciones</th> <!-- Nueva columna para acciones -->
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
 </body>
+
 </html>

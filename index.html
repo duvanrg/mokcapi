@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <a href="https://paola2005.github.io/plantilla/" class="boton-volver" onclick="history.back();">&#8592;  back</a>
+    <a href="https://paola2005.github.io/plantilla/" class="boton-volver" onclick="history.back();">< back</a>
     <h1>Add Product</h1>
-    <button id="abrir-popup">Add Products</button>
+    <button id="abrir-popup">Add New Products</button>
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
         <h1>Add New Product</h1>
@@ -28,9 +28,11 @@
             <input type="number" id="precio" name="precio" required><br>
             <label for="marca">Mark:</label>
             <input type="text" id="marca" name="marca" required><br>
-            <button id="boton-enviar" type="submit">Add</button>
+            <button id="boton-enviar" style="display: block;" type="submit">Add</button>
         </form>
-        <div id="mensaje-exito" style="display: none; color: green; text-align: center; margin-top: 10px;">Product Add Correctly</div>
+        <button id="boton-editar" style="display: none;">Edit</button>
+        <div id="mensaje-exito" style="display: none; color: green; text-align: center; margin-top: 10px;">Product Add
+            Correctly</div>
         <button id="cerrar-popup">Exit</button>
     </div>
     <table id="tabla-productos">

@@ -3,6 +3,10 @@ const abrirPopup = document.getElementById('abrir-popup');
 const cerrarPopup = document.getElementById('cerrar-popup');
 const popup = document.getElementById('popup');
 const overlay = document.getElementById('overlay');
+//obtener el json total de usuarios
+const tablaProductos = document.getElementById('tabla-productos');
+//Enviar un usuario para insertarlo a la api
+const form = document.getElementById('formulario-producto');
 
 abrirPopup.addEventListener('click', function () {
     popup.style.display = 'block';
@@ -12,16 +16,18 @@ abrirPopup.addEventListener('click', function () {
 cerrarPopup.addEventListener('click', function () {
     popup.style.display = 'none';
     overlay.style.display = 'none';
+    const botonAgregar = document.getElementById('boton-enviar');
+    const botonEditar = document.getElementById('boton-editar');
+    botonAgregar.style.display = 'block';
+    botonEditar.style.display = 'none';
 });
 
-//obtener el json total de usuarios
-const tablaProductos = document.getElementById('tabla-productos');
 
 
 // Función para cargar y mostrar los datos de la API en la tabla
 async function cargarDatos() {
     try {
-        const peticion = await fetch('https://64f202d20e1e60602d2490bc.mockapi.io/producto');
+        const peticion = await fetch('https://64f63e182b07270f705e5253.mockapi.io/Products');
         const res = await peticion.json();
 
         // Limpiar la tabla antes de agregar los datos
@@ -37,8 +43,8 @@ async function cargarDatos() {
                 <td>${producto.precio}</td>
                 <td>${producto.marca}</td>
                 <td>
-                <a href="#"><i class="ri-delete-bin-line" onclick="DELETE(${producto.id})"></i></a>
-                <a href="#"><i class="ri-edit-line" onclick="EDIT(${producto.id})"></i></i></a>
+                <a href="#"><i class="ri-delete-bin-line" onclick="DELETE(${producto.id_product})"></i></a>
+                <a href="#"><i class="ri-edit-line" onclick="EDIT(${producto.id_product})"></i></i></a>
                 </td>
             `;
             tablaProductos.querySelector('tbody').appendChild(row);
@@ -48,14 +54,10 @@ async function cargarDatos() {
     }
 }
 
-// Llamar a la función para cargar datos cuando se carga la página
-window.addEventListener('load', cargarDatos);
-
-//Enviar un usuario para insertarlo a la api
-const form = document.getElementById('formulario-producto');    
 
 async function agregarProducto(event) {
     event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada y recargue la página.
+
 
     // Obtener los valores del formulario
     const codigo = document.getElementById('codigo').value;
@@ -80,7 +82,13 @@ async function agregarProducto(event) {
     };
 
     try {
-        let peticion = await fetch("https://64f202d20e1e60602d2490bc.mockapi.io/producto", config);
+
+        const botonAgregar = document.getElementById('boton-enviar');
+        const botonEditar = document.getElementById('boton-editar');
+        botonAgregar.style.display = 'block';
+        botonEditar.style.display = 'none';
+
+        let peticion = await fetch("https://64f63e182b07270f705e5253.mockapi.io/Products", config);
         let res = await peticion.json();
         console.log(res);
 
@@ -99,18 +107,16 @@ async function agregarProducto(event) {
     }
 }
 
-form.addEventListener('submit', agregarProducto);
-
-
 
 const EDIT = async (id) => {
     let config = {
         method: "GET",
         headers: { 'Content-type': 'application/json' }
-    }
-    let peticion = await fetch(`https://64f202d20e1e60602d2490bc.mockapi.io/producto/${id}`, config);
-    let producto = await peticion.json();    
+    };
+    let peticion = await fetch(`https://64f63e182b07270f705e5253.mockapi.io/Products/${id}`, config);
+    let producto = await peticion.json();
     console.log(producto);
+
     // Mostrar el formulario de edición en el popup
     const popup = document.getElementById('popup');
     popup.style.display = 'block';
@@ -124,12 +130,13 @@ const EDIT = async (id) => {
     document.getElementById('marca').value = producto.marca;
 
     // Cambiar el texto del botón a "Editar"
-    const botonEnviar = document.getElementById('boton-enviar');
-    botonEnviar.textContent = 'Editar';
+    const botonAgregar = document.getElementById('boton-enviar');
+    const botonEditar = document.getElementById('boton-editar');
+    botonAgregar.style.display = 'none';
+    botonEditar.style.display = 'block';
 
     // Agregar un evento al botón "Editar" para enviar la solicitud PUT
-    botonEnviar.removeEventListener('submit', agregarProducto);
-    botonEnviar.addEventListener('click', async () => {
+    botonEditar.addEventListener('click', async () => {
         // Obtener los datos del formulario de edición
         const codigo = document.getElementById('codigo').value;
         const nombre = document.getElementById('nombre').value;
@@ -154,8 +161,7 @@ const EDIT = async (id) => {
         };
 
         try {
-            console.log(producto.id);
-            const peticion = await fetch(`https://64f202d20e1e60602d2490bc.mockapi.io/producto/${producto.id}`, config);
+            const peticion = await fetch(`https://64f63e182b07270f705e5253.mockapi.io/Products/${id}`, config);
             const res = await peticion.json();
             console.log(res);
 
@@ -171,7 +177,11 @@ const EDIT = async (id) => {
             document.getElementById('formulario-producto').reset();
 
             // Cambiar el botón de vuelta a "Agregar Producto"
-            botonEnviar.textContent = 'Agregar Producto';
+            botonAgregar.style.display = 'block';
+            botonEditar.style.display = 'none';
+
+            // Recargar la lista de productos
+            cargarDatos();
         } catch (error) {
             console.error('Error al editar el producto:', error);
         }
@@ -185,14 +195,14 @@ async function DELETE(id) {
     const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar este producto?');
 
     if (confirmacion) {
-        
+
         if (id) {
             try {
                 const config = {
                     method: 'DELETE',
                     headers: { 'Content-type': 'application/json' },
                 };
-                const peticion = await fetch(`https://64f202d20e1e60602d2490bc.mockapi.io/producto/${id}`, config);
+                const peticion = await fetch(`https://64f63e182b07270f705e5253.mockapi.io/Products/${id}`, config);
                 const res = await peticion.json();
                 console.log(res);
 
@@ -206,5 +216,7 @@ async function DELETE(id) {
 
 
 
+form.addEventListener('submit', agregarProducto);
 // Llamar a la función para cargar datos cuando se carga la página
 window.addEventListener('load', cargarDatos);
+

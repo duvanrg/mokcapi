@@ -52,10 +52,10 @@ async function cargarDatos() {
 window.addEventListener('load', cargarDatos);
 
 //Enviar un usuario para insertarlo a la api
+const form = document.getElementById('formulario-producto');    
 
-const form = document.getElementById('formulario-producto');
-
-async function agregarProducto() {
+async function agregarProducto(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada y recargue la página.
 
     // Obtener los valores del formulario
     const codigo = document.getElementById('codigo').value;
@@ -97,9 +97,9 @@ async function agregarProducto() {
     } catch (error) {
         console.error('Error al agregar el producto:', error);
     }
-};
+}
 
-addEventListener('submit', agregarProducto);
+form.addEventListener('submit', agregarProducto);
 
 
 

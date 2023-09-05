@@ -27,19 +27,20 @@ h1 {
 /* Estilos para el botón de volver */
 .boton-volver {
     display: inline-block;
-    padding: 10px 5px;
+    padding: 10px 15px;
     margin: 15px;
-    width: 5em;
+    width: 4em;
     background-color: #0056b3;
     color: #fff;
     text-decoration: none;
+    margin-top: 15px;
     border: 1px solid #121212;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .boton-volver:hover {
-    background-color: #0056b3;
+    background-color: #007BFF;
 }
 
 /*Estilos formulario*/
@@ -72,6 +73,7 @@ button {
     background-color: #007BFF;
     margin-left: 15px;
     color: #fff;
+    margin: 5px auto;
     font-weight: 600;
     border: 1px solid #121212;
     padding: 10px 20px;
@@ -122,7 +124,7 @@ table {
     margin-top: 20px;
     justify-self: center;
     align-self: center;
-    background-color: #007BFF;
+    background-color: #aaa;
 }
 
 th,
@@ -133,16 +135,15 @@ td {
 }
 
 th {
-    background-color: #ffffff;
-}
-
-tr:nth-child(even) {
     background-color: #007BFF;
 }
 
+tr:nth-child(even) {
+    background-color: #ddd;
+}
+
 tr:hover td {
-    background-color: #0056b3;
-    color: #ddd;
+    background-color: #00b3ffa1;
 }
 
 /* Estilos para los iconos*/

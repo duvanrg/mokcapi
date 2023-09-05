@@ -4,44 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>productos</title>
+    <title>products</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>
 
 <body>
-    <a href="https://paola2005.github.io/plantilla/" class="boton-volver" onclick="history.back();">&#8592;  Volver</a>
-    <h1>Agregar Producto</h1>
-    <button id="abrir-popup">Abrir Formulario</button>
+    <a href="https://paola2005.github.io/plantilla/" class="boton-volver" onclick="history.back();">&#8592;  back</a>
+    <h1>Add Product</h1>
+    <button id="abrir-popup">Add Products</button>
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
-        <h1>Agregar Producto</h1>
+        <h1>Add New Product</h1>
         <form id="formulario-producto">
-            <label for="codigo">Código:</label>
+            <label for="codigo">Cod:</label>
             <input type="text" id="codigo" name="codigo" required><br>
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">Name:</label>
             <input type="text" id="nombre" name="nombre" required><br>
-            <label for="descripcion">Descripción:</label>
+            <label for="descripcion">Description:</label>
             <textarea id="descripcion" name="descripcion" rows="4" required></textarea><br>
-            <label for="precio">Precio:</label>
+            <label for="precio">price:</label>
             <input type="number" id="precio" name="precio" required><br>
-            <label for="marca">Marca:</label>
+            <label for="marca">Mark:</label>
             <input type="text" id="marca" name="marca" required><br>
-            <button id="boton-enviar" type="submit">Agregar Producto</button>
+            <button id="boton-enviar" type="submit">Add</button>
         </form>
-        <div id="mensaje-exito" style="display: none; color: green; text-align: center; margin-top: 10px;">Producto agregado correctamente</div>
-        <button id="cerrar-popup">Cerrar</button>
+        <div id="mensaje-exito" style="display: none; color: green; text-align: center; margin-top: 10px;">Product Add Correctly</div>
+        <button id="cerrar-popup">Exit</button>
     </div>
     <table id="tabla-productos">
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Marca</th>
-                <th>Acciones</th>
+                <th>Cod</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Mark</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>

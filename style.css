@@ -1,14 +1,48 @@
 body {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1002%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient1003%26quot%3b)'%3e%3c/rect%3e%3cpath d='M1440 0L993.1700000000001 0L1440 186.48z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M993.1700000000001 0L1440 186.48L1440 196.13L981.7800000000001 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M981.78 0L1440 196.13L1440 269.71L466.11 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M466.1100000000001 0L1440 269.71L1440 419.42999999999995L422.5600000000001 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L709.3 560L0 370.28999999999996z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 370.28999999999996L709.3 560L1094.1399999999999 560L0 348.84z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 348.84000000000003L1094.1399999999999 560L1113.1499999999999 560L0 272.83000000000004z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 272.83L1113.1499999999999 560L1220.1699999999998 560L0 248.38z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1002'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1003'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='%2300459e' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
 }
 
 h1 {
+    
+    width: 30rem;    
     text-align: center;
-    margin-top: 20px;
+    background: radial-gradient(circle, #007BFF, #0056B3);
+    place-self: center;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 20px;
+    font-size: 3rem;
+    color: #fff;
 }
+
+/* Estilos para el botón de volver */
+.boton-volver {
+    display: inline-block;
+    padding: 10px 5px;
+    margin: 15px;
+    width: 5em;
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #121212;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-volver:hover {
+    background-color: #0056b3;
+}
+
+/*Estilos formulario*/
 
 form {
     background-color: #fff;
@@ -38,7 +72,8 @@ button {
     background-color: #007BFF;
     margin-left: 15px;
     color: #fff;
-    border: none;
+    font-weight: 600;
+    border: 1px solid #121212;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -56,10 +91,14 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #173cb8;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     z-index: 1000;
+}
+
+#abrir-popup {
+    width: 13rem;
 }
 
 /* Estilos para el fondo oscuro detrás del popup */
@@ -76,35 +115,41 @@ button:hover {
 }
 
 /* Estilos para la tabla */
+
 table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
     margin-top: 20px;
+    justify-self: center;
+    align-self: center;
+    background-color: #007BFF;
 }
 
-th, td {
+th,
+td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #ffffff;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #007BFF;
 }
 
-tr:hover {
-    background-color: #ddd;
+tr:hover td {
+    background-color: #0056b3;
+    color: #ddd;
 }
 
 /* Estilos para los iconos*/
 
-a .ri-delete-bin-line{
+a .ri-delete-bin-line {
     border-radius: 50%;
-    font-size: 1.4rem;
+    font-size: 1rem;
     margin-right: 10px;
     text-decoration: none;
     color: #121212;
@@ -113,13 +158,16 @@ a .ri-delete-bin-line{
     padding: 5px;
 }
 
-a .ri-edit-line{
+a .ri-edit-line {
     border-radius: 50%;
-    font-size: 1.4rem;
-    margin-right: 10px;
+    font-size: 1rem;
     text-decoration: none;
     color: #121212;
     background-color: #00ff1e;
     border: 1px #121212 solid;
     padding: 5px;
+}
+
+a :hover {
+    font-size: 1.2rem;
 }
